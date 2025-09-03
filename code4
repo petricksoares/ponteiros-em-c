@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+#define MAX_FUNCIONARIOS 100
+
+int main() {
+    int n;
+    int horas[MAX_FUNCIONARIOS];
+    int totalHoras = 0;
+
+    printf("Digite o numero de funcionarios: ");
+    scanf("%d", &n);
+
+    if (n > MAX_FUNCIONARIOS || n <= 0) {
+        printf("Numero de funcionarios invalido. O maximo e %d.\n", MAX_FUNCIONARIOS);
+        return 1;
+    }
+
+    printf("Digite as horas trabalhadas de cada funcionario:\n");
+    for (int i = 0; i < n; i++) {
+        printf("Funcionario %d: ", i + 1);
+        scanf("%d", horas + i); 
+    }
+
+    for (int i = 0; i < n; i++) {
+        totalHoras += *(horas + i);
+    }
+
+    printf("\nTotal de horas trabalhadas no mes: %d\n", totalHoras);
+
+    return 0;
+}
