@@ -21,6 +21,6 @@ printf("%d", *ptr);  // Acessa o valor apontado por ptr (10)
  
 
 ## 📋Como os Ponteiros foram usados nos nestes códigos?
-Nos códigos do prjeto os ponteiros foram usandos de algumas maneiras, como: Armazenar endereços de variáveis simples,
+Nos códigos do projeto os ponteiros foram usandos de algumas maneiras, como: Armazenar endereços de variáveis simples,
 o uso de scanf para receber valores e inicialização na declaração, arrays que decaem para ponteiros, percorrer arrays 
 com aritmética de ponteiros, navegação reversa em arrays, tratar matrizes como arrays lineares entre outras formas.
