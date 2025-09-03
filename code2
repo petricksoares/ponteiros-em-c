@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    // Solicitar a idade do usuário
+    printf("Por favor, digite sua idade: ");
+    int idade;
+    scanf("%d", &idade);
+    int *ptr_idade = &idade;
+    printf("Valor da idade: %d\n", *ptr_idade);
+    printf("Endereco de memoria da variavel idade: %p\n",ptr_idade);
+    
+    return 0;
+}
