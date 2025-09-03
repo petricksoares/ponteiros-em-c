@@ -7,6 +7,7 @@ dados dinâmicas e implementar funções que modificam múltiplos valores.
 ## 🎯Sintaxe básica:
 int x = 10;     // Variável inteira
 int *ptr = &x;  // Ponteiro que armazena o endereço de x
+
 printf("%d", *ptr);  // Acessa o valor apontado por ptr (10)
 
 
@@ -16,7 +17,7 @@ printf("%d", *ptr);  // Acessa o valor apontado por ptr (10)
 * Flexibilidade para estruturas complexas
 * Base para alocação dinâmica
 * Entendimento profundo do funcionamento da linguagem C
-* 
+ 
 
 ## 📋Como os Ponteiros foram usados nos nestes códigos?
 Nos códigos do prjeto os ponteiros foram usandos de algumas maneiras, como: Armazenar endereços de variáveis simples,
