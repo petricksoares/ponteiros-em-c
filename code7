@@ -1,0 +1,113 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int matriz[4][4] = {
+        {5, 7, 8, 6},
+        {4, 6, 5, 7},
+        {3, 9, 6, 8},
+        {2, 4, 7, 5}
+    };
+    
+    int i, j;
+    int pares = 0, impares = 0;
+    int totalJogador[4] = {0};
+    int totalSet[4] = {0};
+    float mediaJogador[4] = {0};
+    int diferenca[4];
+    int min, max;
+    
+    int (*ptrMatriz)[4] = matriz;
+    
+    printf("=== MATRIZ DE PONTOS ===\n");
+    for(i = 0; i < 4; i++) {
+        printf("Jogador %d: ", i+1);
+        int *ptrLinha = *(ptrMatriz + i);
+        for(j = 0; j < 4; j++) {
+            printf("%d ", *(ptrLinha + j));
+            
+            if(*(ptrLinha + j) % 2 == 0) {
+                pares++;
+            } else {
+                impares++;
+            }
+            
+            totalJogador[i] += *(ptrLinha + j);
+            
+            totalSet[j] += *(ptrLinha + j);
+        }
+        printf("\n");
+    }
+    
+    printf("\n=== CONTAGEM DE PARES E ÍMPARES ===\n");
+    printf("Pontos pares: %d\n", pares);
+    printf("Pontos ímpares: %d\n", impares);
+    
+    printf("\n=== PONTUAÇÃO TOTAL POR JOGADOR ===\n");
+    int maiorPontuacao = totalJogador[0];
+    int jogadorMaior = 1;
+    
+    int *ptrTotalJogador = totalJogador;
+    for(i = 0; i < 4; i++) {
+        printf("Jogador %d: %d pontos\n", i+1, *(ptrTotalJogador + i));
+        if(*(ptrTotalJogador + i) > maiorPontuacao) {
+            maiorPontuacao = *(ptrTotalJogador + i);
+            jogadorMaior = i+1;
+        }
+    }
+    printf("Jogador com maior pontuação: Jogador %d (%d pontos)\n", jogadorMaior, maiorPontuacao);
+    
+    printf("\n=== PONTUAÇÃO TOTAL POR SET ===\n");
+    int setMaisDisputado = totalSet[0];
+    int setMaior = 1;
+    
+    int *ptrTotalSet = totalSet;
+    for(j = 0; j < 4; j++) {
+        printf("Set %d: %d pontos\n", j+1, *(ptrTotalSet + j));
+        if(*(ptrTotalSet + j) > setMaisDisputado) {
+            setMaisDisputado = *(ptrTotalSet + j);
+            setMaior = j+1;
+        }
+    }
+    printf("Set mais disputado: Set %d (%d pontos)\n", setMaior, setMaisDisputado);
+    
+    printf("\n=== MÉDIA DE PONTOS POR JOGADOR ===\n");
+    float *ptrMedia = mediaJogador;
+    int *ptrTotal = totalJogador;
+    for(i = 0; i < 4; i++) {
+        *(ptrMedia + i) = *(ptrTotal + i) / 4.0;
+        printf("Jogador %d: %.2f pontos por set\n", i+1, *(ptrMedia + i));
+    }
+    
+    printf("\n=== REGULARIDADE DOS JOGADORES ===\n");
+    int menorDiferenca = 100;
+    int jogadorMaisRegular = 1;
+    
+    for(i = 0; i < 4; i++) {
+        int *ptrLinhaAtual = *(ptrMatriz + i);
+        
+        min = *ptrLinhaAtual;
+        max = *ptrLinhaAtual;
+        
+        for(j = 1; j < 4; j++) {
+            if(*(ptrLinhaAtual + j) < min) {
+                min = *(ptrLinhaAtual + j);
+            }
+            if(*(ptrLinhaAtual + j) > max) {
+                max = *(ptrLinhaAtual + j);
+            }
+        }
+        
+        diferenca[i] = max - min;
+        printf("Jogador %d: diferença = %d (min: %d, max: %d)\n", i+1, diferenca[i], min, max);
+        
+        if(diferenca[i] < menorDiferenca) {
+            menorDiferenca = diferenca[i];
+            jogadorMaisRegular = i+1;
+        }
+    }
+    
+    printf("Jogador mais regular: Jogador %d (diferença de %d pontos)\n", jogadorMaisRegular, menorDiferenca);
+    
+    return 0;
+}
