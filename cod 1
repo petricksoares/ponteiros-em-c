@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    // 1- João tem um cofrinho com uma quantia guardada. 
+    //Variável c para represetar o valor que há no cofrinho
+    int c = 100;
+    int *ptr;
+    ptr = &c;   
+    printf("Valor do cofre: %d\n", *ptr);
+    printf("Endereco de memoria da variavel c: %p\n", ptr);
+
+    return 0;
+}
