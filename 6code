@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+#define ALUNOS 3
+#define PROVAS 3
+
+int main() {
+    float notas[ALUNOS][PROVAS];
+    float *ptr = &notas[0][0];
+    float soma_diagonal = 0;
+    
+    // Preenchimento
+    printf("Digite as notas (%d alunos x %d provas):\n", ALUNOS, PROVAS);
+    for (int i = 0; i < ALUNOS * PROVAS; i++) {
+        printf("Nota %d: ", i + 1);
+        scanf("%f", ptr + i);
+    }
+    
+    // Exibição
+    printf("\n= MATRIZ DE NOTAS =\n");
+    for (int i = 0; i < ALUNOS; i++) {
+        printf("Aluno %d: ", i + 1);
+        for (int j = 0; j < PROVAS; j++) {
+            printf("%.2f ", *(ptr + i * PROVAS + j));
+        }
+        printf("\n");
+    }
+    
+    // Diagonal principal
+    printf("\n= DIAGONAL PRINCIPAL =\n");
+    for (int i = 0; i < ALUNOS; i++) {
+        float elemento = *(ptr + i * PROVAS + i);
+        printf("[%d][%d]: %.2f\n", i + 1, i + 1, elemento);
+        soma_diagonal += elemento;
+    }
+    
+    printf("\nSoma da diagonal: %.2f\n", soma_diagonal);
+    
+    return 0;
+}
