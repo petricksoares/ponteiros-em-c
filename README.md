@@ -6,6 +6,7 @@ dados dinâmicas e implementar funções que modificam múltiplos valores.
 
 ## 🎯Sintaxe básica:
 int x = 10;     // Variável inteira
+
 int *ptr = &x;  // Ponteiro que armazena o endereço de x
 
 printf("%d", *ptr);  // Acessa o valor apontado por ptr (10)
